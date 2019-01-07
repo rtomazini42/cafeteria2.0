@@ -25,9 +25,7 @@ public class Nota extends JFrame {
 	private JTextField Telefone;
 	private JTextArea lista;
 	private JTextArea NotaFiscal;
-	int qtdSal = 0;
-	int qtdDoc = 0;
-	int qtdCaf = 0;
+
 	/**
 	 * Launch the application.
 	 */
@@ -64,8 +62,7 @@ public class Nota extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Produto salgado = new Produto("salgado",1.99);
 				ItensPedidos.produtos.add(salgado);
-				qtdSal++;
-				lista.setText(Integer.toString(qtdSal) + "x Salgado");
+				lista.setText(cliente.pedido.getItems());
 			}
 		});
 		btnSalgado.setBounds(21, 195, 89, 23);
@@ -76,8 +73,8 @@ public class Nota extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Produto doce = new Produto("doce",1.99);
 				ItensPedidos.produtos.add(doce);
-				qtdDoc++;
-				lista.setText(Integer.toString(qtdDoc) + "x Doce");
+				lista.setText(cliente.pedido.getItems());
+				//lista.setText(Integer.toString(qtdDoc) + "x Doce");
 			}
 		});
 		addDoce.setBounds(21, 229, 89, 23);
@@ -88,8 +85,8 @@ public class Nota extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Produto cafe = new Produto("cafe",2.99);
 				ItensPedidos.produtos.add(cafe);
-				qtdCaf++;
-				lista.setText(Integer.toString(qtdCaf) + "x Cafe");
+				lista.setText(cliente.pedido.getItems());
+
 				
 			}
 		});
@@ -105,20 +102,13 @@ public class Nota extends JFrame {
 		JButton btnNovaNota = new JButton("Nova Nota");
 		btnNovaNota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				qtdSal = 0;
-				qtdDoc = 0;
-				qtdCaf = 0;
+
 				Cliente cliente = new Cliente();
 				//System.out.println(Nome.getText());
 				cliente.setNome(Nome.getText());
 				NotaFiscal.setText(cliente.getNome());
 				cliente.setTelefone(Integer.parseInt(Telefone.getText()));
 				Pedido.limpar();
-				cliente.pedido.limpar();
-				//cliente.pedido.todosItems = null;
-				//cliente.pedido.setValorTotal(0.0);
-				
-				//ItensPedidos.
 			}
 		});
 		btnNovaNota.setBounds(21, 11, 414, 23);
