@@ -12,7 +12,6 @@ public class Pedido {
 		for(int i = 0; i < produtos.size(); i++){
 			Produto item = produtos.get(i);
 			System.out.println(item.getNome() +" : "+ Double.toString(item.getValor()));
-			System.out.println("Rodando");
 			if (todosItems != "null"){
 				todosItems = (todosItems + (item.getNome() +" : "+ Double.toString(item.getValor()) + "\n"));
 			}
@@ -20,7 +19,7 @@ public class Pedido {
 				todosItems = ((item.getNome() +" : "+ Double.toString(item.getValor()) + "\n"));
 			}
 		}
-			
+		System.out.println("Rodando");	
 		return todosItems;
 	}
 	
@@ -38,7 +37,7 @@ public class Pedido {
 		this.valorTotal = valorTotal;
 	}
 	public static void limpar() {
-		ItensPedidos.produtos.clear();
+		ItensPedidos pedidos = new ItensPedidos();
 	}
 	
 	

@@ -23,7 +23,7 @@ public class Nota extends JFrame {
 	private JPanel contentPane;
 	private JTextField Nome;
 	private JTextField Telefone;
-	private JTextArea notinha;
+	private JTextArea lista;
 	private JTextArea NotaFiscal;
 
 	/**
@@ -64,7 +64,7 @@ public class Nota extends JFrame {
 				ItensPedidos.produtos.add(salgado);
 			}
 		});
-		btnSalgado.setBounds(21, 161, 89, 23);
+		btnSalgado.setBounds(21, 195, 89, 23);
 		contentPane.add(btnSalgado);
 		
 		JButton addDoce = new JButton("Doce");
@@ -74,7 +74,7 @@ public class Nota extends JFrame {
 				ItensPedidos.produtos.add(doce);
 			}
 		});
-		addDoce.setBounds(21, 195, 89, 23);
+		addDoce.setBounds(21, 229, 89, 23);
 		contentPane.add(addDoce);
 		
 		JButton addCafe = new JButton("Caf\u00E9");
@@ -84,7 +84,7 @@ public class Nota extends JFrame {
 				ItensPedidos.produtos.add(cafe);
 			}
 		});
-		addCafe.setBounds(21, 229, 89, 23);
+		addCafe.setBounds(21, 263, 89, 23);
 		contentPane.add(addCafe);
 		
 		Nome = new JTextField();
@@ -101,9 +101,10 @@ public class Nota extends JFrame {
 				cliente.setNome(Nome.getText());
 				NotaFiscal.setText(cliente.getNome());
 				cliente.setTelefone(Integer.parseInt(Telefone.getText()));
+				Pedido.limpar();
 				cliente.pedido.limpar();
-				cliente.pedido.todosItems = null;
-				cliente.pedido.setValorTotal(0.0);
+				//cliente.pedido.todosItems = null;
+				//cliente.pedido.setValorTotal(0.0);
 				
 				//ItensPedidos.
 			}
@@ -139,24 +140,14 @@ public class Nota extends JFrame {
 		txtpnPedir.setBounds(21, 130, 60, 20);
 		contentPane.add(txtpnPedir);
 		
-		notinha = new JTextArea();
-		notinha.setFont(new Font("Lucida Sans", Font.PLAIN, 12));
-		notinha.setBackground(Color.WHITE);
-		notinha.setEditable(false);
-		notinha.setBounds(21, 297, 270, 159);
-		contentPane.add(notinha);
-		notinha.setColumns(10);
+		lista = new JTextArea();
+		lista.setFont(new Font("Lucida Sans", Font.PLAIN, 12));
+		lista.setBackground(Color.WHITE);
+		lista.setEditable(false);
+		lista.setBounds(21, 297, 270, 159);
+		contentPane.add(lista);
+		lista.setColumns(10);
 		
-		JButton btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cliente.pedido.getValorTotal();
-				notinha.setText(cliente.getNome()+"\n"+"Valor a pagar:\n" + Double.toString(cliente.pedido.getValorTotal()));
-				
-			}
-		});
-		btnFinalizar.setBounds(21, 263, 89, 23);
-		contentPane.add(btnFinalizar);
 		
 		JButton btnPagar = new JButton("Pagar");
 		btnPagar.addActionListener(new ActionListener() {
@@ -167,7 +158,6 @@ public class Nota extends JFrame {
 				//cliente.pedido.setValorTotal(0.0);
 				conteudo = "----Nota Fiscal-----\n"+"Cliente:"+ cliente.getNome() + "\nTelefone:" +cliente.getTelefone() + "\n" +cliente.pedido.getItems() + "Valor pago" + cliente.pedido.getValorTotal();
 				NotaFiscal.setText(conteudo);
-				ItensPedidos.produtos.clear();
 			}
 		});
 		btnPagar.setBounds(21, 462, 89, 23);

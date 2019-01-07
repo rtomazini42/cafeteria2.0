@@ -9,7 +9,7 @@ public class Produto {
 		this.Nome = Nome;
 		this.Valor = Valor;
 		setQuantidade(100);
-		System.out.println(Nome);
+		//System.out.println(Nome);
 	}
 	public  String getNome() {
 		return Nome;
