@@ -13,13 +13,16 @@ import javax.swing.JTextField;
 import javax.swing.DropMode;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextArea;
 
 public class Nota extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Nome;
 	private JTextField Telefone;
-	private JTextField notinha;
+	private JTextArea notinha;
 	private JTextField NotaFiscal;
 
 	/**
@@ -99,7 +102,7 @@ public class Nota extends JFrame {
 				//ItensPedidos.
 			}
 		});
-		btnNovaNota.setBounds(10, 11, 89, 23);
+		btnNovaNota.setBounds(21, 11, 414, 23);
 		contentPane.add(btnNovaNota);
 		
 		
@@ -130,9 +133,11 @@ public class Nota extends JFrame {
 		txtpnPedir.setBounds(21, 130, 60, 20);
 		contentPane.add(txtpnPedir);
 		
-		notinha = new JTextField();
+		notinha = new JTextArea();
+		notinha.setFont(new Font("Lucida Sans", Font.PLAIN, 12));
+		notinha.setBackground(Color.WHITE);
 		notinha.setEditable(false);
-		notinha.setBounds(21, 294, 230, 107);
+		notinha.setBounds(21, 297, 270, 159);
 		contentPane.add(notinha);
 		notinha.setColumns(10);
 		
@@ -140,7 +145,8 @@ public class Nota extends JFrame {
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cliente.pedido.getValorTotal();
-				ItensPedidos.produtos.clear();
+				notinha.setText(cliente.getNome()+"\n"+"Valor a pagar:\n" + Double.toString(cliente.pedido.getValorTotal()));
+				
 			}
 		});
 		btnFinalizar.setBounds(21, 263, 89, 23);
@@ -155,7 +161,7 @@ public class Nota extends JFrame {
 				
 			}
 		});
-		btnPagar.setBounds(21, 412, 89, 23);
+		btnPagar.setBounds(21, 462, 89, 23);
 		contentPane.add(btnPagar);
 		
 		NotaFiscal = new JTextField();

@@ -14,10 +14,12 @@ public class Pedido {
 		for(int i = 0; i < produtos.size(); i++){
 			Produto item = produtos.get(i);
 			setValorTotal(item.getValor() + valorTotal);
-		    System.out.println(item.getValor());
+		    //System.out.println(item.getValor());
+		    //System.out.println(i);
 		    
 		}
 		System.out.println(valorTotal);
+		ItensPedidos.produtos.clear();
 		return valorTotal;
 	}
 	public void setValorTotal(double valorTotal) {
