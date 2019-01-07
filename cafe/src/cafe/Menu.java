@@ -18,8 +18,12 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
+import javax.swing.JInternalFrame;
+import javax.swing.JScrollBar;
+import java.awt.Canvas;
+import java.awt.SystemColor;
 
-public class Nota extends JFrame {
+public class Menu extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField Nome;
@@ -34,7 +38,7 @@ public class Nota extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Nota frame = new Nota();
+					Menu frame = new Menu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +50,7 @@ public class Nota extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Nota() {
+	public Menu() {
 		Cliente cliente = new Cliente();
 		//System.out.println(Nome.getText());
 		//cliente.setNome("Default");
@@ -54,6 +58,7 @@ public class Nota extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 636, 561);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(60, 179, 113));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -143,17 +148,9 @@ public class Nota extends JFrame {
 		txtpnPedir.setBounds(21, 130, 60, 20);
 		contentPane.add(txtpnPedir);
 		
-		lista = new JTextArea();
-		lista.setWrapStyleWord(true);
-		lista.setFont(new Font("Lucida Sans", Font.PLAIN, 12));
-		lista.setBackground(Color.WHITE);
-		lista.setEditable(false);
-		lista.setBounds(21, 297, 270, 159);
-		contentPane.add(lista);
-		lista.setColumns(10);
-		
 		
 		JButton btnPagar = new JButton("Pagar");
+		btnPagar.setFont(new Font("Garamond", Font.PLAIN, 24));
 		btnPagar.addActionListener(new ActionListener() {
 			private String conteudo;
 
@@ -167,7 +164,7 @@ public class Nota extends JFrame {
 				NotaFiscal.setText(conteudo);
 			}
 		});
-		btnPagar.setBounds(21, 462, 89, 23);
+		btnPagar.setBounds(21, 462, 270, 49);
 		contentPane.add(btnPagar);
 		
 		NotaFiscal = new JTextArea();
@@ -175,5 +172,23 @@ public class Nota extends JFrame {
 		NotaFiscal.setBounds(301, 130, 292, 355);
 		contentPane.add(NotaFiscal);
 		NotaFiscal.setColumns(10);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(274, 297, 17, 159);
+		contentPane.add(scrollBar);
+		
+		lista = new JTextArea();
+		lista.setWrapStyleWord(true);
+		lista.setFont(new Font("Lucida Sans", Font.PLAIN, 12));
+		lista.setBackground(Color.WHITE);
+		lista.setEditable(false);
+		lista.setBounds(21, 297, 270, 159);
+		contentPane.add(lista);
+		lista.setColumns(10);
+		
+		Canvas canvas = new Canvas();
+		canvas.setBackground(SystemColor.desktop);
+		canvas.setBounds(493, 10, 100, 100);
+		contentPane.add(canvas);
 	}
 }
