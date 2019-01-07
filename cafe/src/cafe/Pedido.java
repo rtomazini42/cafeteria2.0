@@ -4,26 +4,41 @@ import java.util.List;
 
 public class Pedido {
 	private double valorTotal = 0;
-	
+	public String todosItems = null;
 	//ItensPedidos pedidos = new ItensPedidos();
 	
-	
+	public String getItems() {
+		List<Produto> produtos = ItensPedidos.produtos;
+		for(int i = 0; i < produtos.size(); i++){
+			Produto item = produtos.get(i);
+			System.out.println(item.getNome() +" : "+ Double.toString(item.getValor()));
+			System.out.println("Rodando");
+			if (todosItems != "null"){
+				todosItems = (todosItems + (item.getNome() +" : "+ Double.toString(item.getValor()) + "\n"));
+			}
+			else {
+				todosItems = ((item.getNome() +" : "+ Double.toString(item.getValor()) + "\n"));
+			}
+		}
+			
+		return todosItems;
+	}
 	
 	public double getValorTotal() {
 		List<Produto> produtos = ItensPedidos.produtos;
 		for(int i = 0; i < produtos.size(); i++){
 			Produto item = produtos.get(i);
 			setValorTotal(item.getValor() + valorTotal);
-		    //System.out.println(item.getValor());
-		    //System.out.println(i);
 		    
 		}
 		System.out.println(valorTotal);
-		ItensPedidos.produtos.clear();
 		return valorTotal;
 	}
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+	public static void limpar() {
+		ItensPedidos.produtos.clear();
 	}
 	
 	

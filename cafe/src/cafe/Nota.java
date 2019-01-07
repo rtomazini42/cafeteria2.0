@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.DropMode;
@@ -23,7 +24,7 @@ public class Nota extends JFrame {
 	private JTextField Nome;
 	private JTextField Telefone;
 	private JTextArea notinha;
-	private JTextField NotaFiscal;
+	private JTextArea NotaFiscal;
 
 	/**
 	 * Launch the application.
@@ -95,10 +96,15 @@ public class Nota extends JFrame {
 		JButton btnNovaNota = new JButton("Nova Nota");
 		btnNovaNota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Cliente cliente = new Cliente();
+				Cliente cliente = new Cliente();
 				//System.out.println(Nome.getText());
 				cliente.setNome(Nome.getText());
+				NotaFiscal.setText(cliente.getNome());
 				cliente.setTelefone(Integer.parseInt(Telefone.getText()));
+				cliente.pedido.limpar();
+				cliente.pedido.todosItems = null;
+				cliente.pedido.setValorTotal(0.0);
+				
 				//ItensPedidos.
 			}
 		});
@@ -154,19 +160,21 @@ public class Nota extends JFrame {
 		
 		JButton btnPagar = new JButton("Pagar");
 		btnPagar.addActionListener(new ActionListener() {
+			private String conteudo;
+
 			public void actionPerformed(ActionEvent e) {
+				//cliente.pedido.getItems();
+				//cliente.pedido.setValorTotal(0.0);
+				conteudo = "----Nota Fiscal-----\n"+"Cliente:"+ cliente.getNome() + "\nTelefone:" +cliente.getTelefone() + "\n" +cliente.pedido.getItems() + "Valor pago" + cliente.pedido.getValorTotal();
+				NotaFiscal.setText(conteudo);
 				ItensPedidos.produtos.clear();
-				cliente.pedido.setValorTotal(0.0);
-				NotaFiscal.setText(cliente.getNome() + System.lineSeparator()+ cliente.getTelefone());
-				
 			}
 		});
 		btnPagar.setBounds(21, 462, 89, 23);
 		contentPane.add(btnPagar);
 		
-		NotaFiscal = new JTextField();
+		NotaFiscal = new JTextArea();
 		NotaFiscal.setEditable(false);
-		NotaFiscal.setHorizontalAlignment(SwingConstants.CENTER);
 		NotaFiscal.setBounds(301, 130, 292, 355);
 		contentPane.add(NotaFiscal);
 		NotaFiscal.setColumns(10);
