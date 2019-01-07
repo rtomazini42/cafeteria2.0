@@ -1,6 +1,7 @@
 package cafe;
 
 import java.util.List;
+import java.text.DecimalFormat;
 
 public class Pedido {
 	private double valorTotal = 0;
@@ -20,7 +21,7 @@ public class Pedido {
 		return todosItems;
 	}
 	
-	public double getValorTotal() {
+	public String getValorTotal() {
 		valorTotal = 0;
 		List<Produto> produtos = ItensPedidos.produtos;
 		for(int i = 0; i < produtos.size(); i++){
@@ -29,7 +30,9 @@ public class Pedido {
 		    
 		}
 		System.out.println(valorTotal);
-		return valorTotal;
+		DecimalFormat formatador = new DecimalFormat("0.00");
+		formatador.format(valorTotal);
+		return formatador.format(valorTotal);
 	}
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;

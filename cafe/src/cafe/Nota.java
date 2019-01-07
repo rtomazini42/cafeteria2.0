@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
+import javax.swing.JToolBar;
 
 public class Nota extends JFrame {
 
@@ -103,10 +104,10 @@ public class Nota extends JFrame {
 		btnNovaNota.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Cliente cliente = new Cliente();
+				
 				//System.out.println(Nome.getText());
 				cliente.setNome(Nome.getText());
-				NotaFiscal.setText(cliente.getNome());
+				NotaFiscal.setText("Pedindo por: " + cliente.getNome());
 				cliente.setTelefone(Integer.parseInt(Telefone.getText()));
 				Pedido.limpar();
 			}
@@ -143,6 +144,7 @@ public class Nota extends JFrame {
 		contentPane.add(txtpnPedir);
 		
 		lista = new JTextArea();
+		lista.setWrapStyleWord(true);
 		lista.setFont(new Font("Lucida Sans", Font.PLAIN, 12));
 		lista.setBackground(Color.WHITE);
 		lista.setEditable(false);
@@ -158,7 +160,10 @@ public class Nota extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//cliente.pedido.getItems();
 				//cliente.pedido.setValorTotal(0.0);
-				conteudo = "----Nota Fiscal-----\n"+"Cliente:"+ cliente.getNome() + "\nTelefone:" +cliente.getTelefone() + "\n" +cliente.pedido.getItems() + "Valor pago" + cliente.pedido.getValorTotal();
+				String nome = cliente.getNome();
+				String telefone = Integer.toString(cliente.getTelefone());
+				
+				conteudo = "----Nota Fiscal-----\n"+"Cliente:"+ nome + "\nTelefone:" + telefone + "\n" +cliente.pedido.getItems() + "Valor pago : " + cliente.pedido.getValorTotal();
 				NotaFiscal.setText(conteudo);
 			}
 		});
