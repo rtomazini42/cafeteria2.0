@@ -17,7 +17,7 @@ public class Pedido {
 			todosItems = (todosItems + (item.getNome() +" : "+ Double.toString(item.getValor()) + "\n"));
 
 		}
-		System.out.println("Rodando");	
+		//System.out.println("Rodando");	
 		return todosItems;
 	}
 	
@@ -29,7 +29,7 @@ public class Pedido {
 			setValorTotal(item.getValor() + valorTotal);
 		    
 		}
-		System.out.println(valorTotal);
+		//System.out.println(valorTotal);
 		DecimalFormat formatador = new DecimalFormat("0.00");
 		formatador.format(valorTotal);
 		return formatador.format(valorTotal);
