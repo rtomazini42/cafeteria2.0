@@ -1,6 +1,5 @@
 package cafe;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,23 +7,23 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.DropMode;
 import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextArea;
-import javax.swing.JToolBar;
-import javax.swing.JInternalFrame;
 import javax.swing.JScrollBar;
 import java.awt.Canvas;
 import java.awt.SystemColor;
 
 public class Menu extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField Nome;
 	private JTextField Telefone;
